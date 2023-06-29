@@ -1,5 +1,10 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const Shape = require('./lib/shapes.js');
+
+const newShape = new Shape('blue', 'green', 'RWB');
+console.log(newShape);
+
 
 inquirer
     .prompt([
