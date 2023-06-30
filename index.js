@@ -2,10 +2,6 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const Shape = require('./lib/shapes.js');
 
-const newShape = new Shape('blue', 'green', 'RWB');
-console.log(newShape);
-
-
 inquirer
     .prompt([
         {
@@ -31,5 +27,15 @@ inquirer
         }
     ])
     .then((data) => {
-        console.log(`You selected a ${data.shapecolor} ${data.shape} containing ${data.textcolor} characters ${data.text}`);
+        if (data.shape == 'Circle'){
+            const newCircle = new Shape.Circle(data.shapecolor, data.textcolor, data.text);
+            newCircle.render(data.shapecolor, data.textcolor, data.text);
+        } else if (data.shape == 'Triangle'){
+            const newTriangle = new Shape.Triangle(data.shapecolor, data.textcolor, data.text);
+            newTriangle.render(data.shapecolor, data.textcolor, data.text);
+        } else if (data.shape == 'Square'){
+            const newSquare = new Shape.Square(data.shapecolor, data.textcolor, data.text);
+            newSquare.render(data.shapecolor, data.textcolor, data.text);
+        }
+        console.log(`Created a ${data.shapecolor} ${data.shape} containing ${data.textcolor} characters ${data.text}`);
     });
